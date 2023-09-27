@@ -1,0 +1,13 @@
+{
+    "files": [
+        "labs.py",
+        "mainwindow.py",
+        "mainwindow.ui",
+        "executablesTableModel.py",
+        "labs.manifest",
+        "downloader.py",
+        "configPath.ui",
+        "configPath.py",
+        "doubleclickedlineedit.py"
+    ]
+}

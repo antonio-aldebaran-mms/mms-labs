@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ConfigPath</class>
+ <widget class="QDialog" name="ConfigPath">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>729</width>
+    <height>347</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MiningMath Labs - Configuration</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Configuration for executables:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="labelPath">
+       <property name="minimumSize">
+        <size>
+         <width>78</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Folder for labs:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="DoubleClickedLineEdit" name="lePath">
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pbPath">
+       <property name="text">
+        <string>Select folder</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Configuration for python (experimental)</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="lbPython">
+       <property name="minimumSize">
+        <size>
+         <width>78</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Python exe:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="DoubleClickedLineEdit" name="lePython"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pbPython">
+       <property name="text">
+        <string>Select file</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Using Python Files&lt;/span&gt;&lt;/p&gt;&lt;p&gt;To execute Python scripts, you must have the Python interpreter installed on your system. It's not automatically included, so you'll need to install it manually. You can download the official Python installer from &lt;a href=&quot;https://www.python.org/downloads/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;python.org&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Additionally, each Python script may have its own set of requirements, which are usually listed in a &lt;span style=&quot; font-family:'Courier New';&quot;&gt;requirements.txt&lt;/span&gt; file within the script's directory. These dependencies need to be installed using the package manager, &lt;span style=&quot; font-family:'Courier New';&quot;&gt;pip&lt;/span&gt;, to ensure the script functions correctly. If you're unfamiliar with this process, it's crucial to read the documentation provided with the script or consult Python's official documentation.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>DoubleClickedLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>doubleclickedlineedit</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>ConfigPath</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>ConfigPath</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
