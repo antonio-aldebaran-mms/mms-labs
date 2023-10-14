@@ -1,9 +1,12 @@
+# This Python file uses the following encoding: utf-8
+# ------------------------------------------------------------------------------
+# Copyright (c) 2023 MiningMath, miningmath@miningmath.com
+# Licensed under the MIT License.
+# ------------------------------------------------------------------------------
 from PySide6.QtWidgets import QLineEdit
 from PySide6.QtCore import Signal, QEvent
 
-"""
-    QLineEdit com ação no double click
-"""
+# QLineEdit com ação no double click adicionado no configPath.ui
 class DoubleClickedLineEdit(QLineEdit):
     doubleClicked = Signal()
 

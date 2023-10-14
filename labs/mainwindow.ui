@@ -28,7 +28,7 @@
     <item>
      <widget class="QLabel" name="label">
       <property name="text">
-       <string>** These executables are custom-built and may contain errors. Please back up your project and use them at your own risk</string>
+       <string>** These apps are custom-built and may contain errors. Please back up your project and use them at your own risk</string>
       </property>
      </widget>
     </item>
@@ -60,7 +60,8 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="addNew">
    <property name="icon">
-    <iconset theme="window-new"/>
+    <iconset theme="window-new">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Add exe</string>

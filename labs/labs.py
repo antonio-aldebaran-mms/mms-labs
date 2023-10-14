@@ -1,3 +1,8 @@
+# This Python file uses the following encoding: utf-8
+# ------------------------------------------------------------------------------
+# Copyright (c) 2023 MiningMath, miningmath@miningmath.com
+# Licensed under the MIT License.
+# ------------------------------------------------------------------------------
 import sys
 from PySide6.QtWidgets import QApplication
 from PySide6.QtCore  import QThreadPool
