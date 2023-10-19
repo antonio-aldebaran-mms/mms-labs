@@ -44,6 +44,29 @@ class Application:
         else:
             print("No requirements.txt file found. Skipping dependency installation.")
 
+    # cria o diretório virtual para o app
+    def createVenv(self):
+        directory = self.fileInfo.absolutePath()
+        venvPath = os.path.join(directory, 'venv')  # Diretório onde o venv será criado
+        venvInfo = QFileInfo(venvPath)
+        if (venvInfo.exists()) :
+            return
+
+        settings = QSettings("MiningMath", "MMLabs")
+        pythonPath = settings.value("python_path", None)
+
+        # Criar o ambiente virtual
+        try:
+            subprocess.run([pythonPath, '-m', 'venv', venvPath], check=True)
+            print(f"Virtual environment created at {venvPath}")
+        except Exception as e:
+            print(f"Error creating virtual environment: {e}")
+            return
+
+        requirementsPath = os.path.join(directory, 'requirements.txt')  # Path para o arquivo requirements.txt
+        reqInfo = QFileInfo(requirementsPath)
+        if (reqInfo.exists()) :
+            self.installRequirements()
 
     # Compila todos os arquivos .ui no diretório especificado usando o uic.exe dentro do ambiente virtual associado.
     def compileUiFiles(self):
@@ -84,29 +107,7 @@ class Application:
             except subprocess.CalledProcessError as e:
                 print(f"Erro ao compilar o arquivo {uiFile}: {e}.")
 
-    # cria o diretório virtual para o app
-    def createVenv(self):
-        directory = self.fileInfo.absolutePath()
-        venvPath = os.path.join(directory, 'venv')  # Diretório onde o venv será criado
-        venvInfo = QFileInfo(venvPath)
-        if (venvInfo.exists()) :
-            return
 
-        settings = QSettings("MiningMath", "MMLabs")
-        pythonPath = settings.value("python_path", None)
-
-        # Criar o ambiente virtual
-        try:
-            subprocess.run([pythonPath, '-m', 'venv', venvPath], check=True)
-            print(f"Virtual environment created at {venvPath}")
-        except Exception as e:
-            print(f"Error creating virtual environment: {e}")
-            return
-
-        requirementsPath = os.path.join(directory, 'requirements.txt')  # Path para o arquivo requirements.txt
-        reqInfo = QFileInfo(requirementsPath)
-        if (reqInfo.exists()) :
-            self.installRequirements()
 
 
     # ler o arquivo readme para construir a descrição
