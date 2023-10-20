@@ -16,6 +16,7 @@ from ui_mainwindow import Ui_MainWindow
 
 from appTableModel import AppTableModel, TooltipDelegate
 from configPath import ConfigPathDialog
+import sys
 
 
 class MainWindow(QMainWindow):
@@ -50,6 +51,11 @@ class MainWindow(QMainWindow):
         self.model.loadLabs()
         settings = QSettings("MiningMath", "MMLabs")
         lastPath = settings.value("last_path", None)
+
+        if len(sys.argv) > 1:
+            lastPath = sys.argv[1]  # ou qualquer índice correspondente
+            settings.setValue("last_path", lastPath)
+
         if lastPath:
             self.path = lastPath
             self.model.loadPath(self.path)
@@ -65,9 +71,11 @@ class MainWindow(QMainWindow):
 
         initialPython = settings.value("python_path", None)
         if initialPython == None or initialPython == "":
-            pyPath = QFileInfo("./Python3/python.exe");
+            if len(sys.argv) > 2:
+                pyPath = QFileInfo(sys.argv[2])
+            else:
+                pyPath = QFileInfo("./Python3/python.exe");
             settings.setValue("python_path", pyPath.absoluteFilePath())
-
 
     # ação para adicionar um executável individual fora do path
     def on_addExec_clicked(self):
