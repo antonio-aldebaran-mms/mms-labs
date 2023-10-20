@@ -106,7 +106,6 @@ class AppTableModel(QAbstractTableModel):
 
                 try:
                     command = os.path.join(venvPath, "Scripts", "activate.bat") + " && python " + scriptPath
-                    print(command)
                     subprocess.Popen(command, shell=True)
                 except Exception as e:
                     print(f"Error executing script: {e}")
@@ -153,7 +152,6 @@ class AppTableModel(QAbstractTableModel):
                 app.installRequirements()
             app.status = "Updated"
             app.hash = app.downloader.getLocalHash(dir=app.dir)
-            print("Sucesso download", app.hash)
 
         else:
             app.status = "Download Error"
@@ -242,7 +240,6 @@ class AppTableModel(QAbstractTableModel):
 
     def loadLabs(self):
         directories = self.downloader.getRepositoryDirectories()
-        print(directories)
         if directories:
             for dir in directories:
                 date = self.downloader.getCommitDate(dir)
@@ -276,7 +273,6 @@ class AppTableModel(QAbstractTableModel):
                         if pattern.search(contents):
                             fileInfo = QFileInfo(filepath)
                             rootInfo = QFileInfo(root)
-                            print("load local " + fileInfo.absoluteFilePath())
                             self.addData(github=False, fileInfo=fileInfo, dir=rootInfo.baseName())
 
         settings = QSettings("MiningMath", "MMLabs")

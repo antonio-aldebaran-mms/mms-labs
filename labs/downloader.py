@@ -32,8 +32,6 @@ class DownloadTask(QRunnable):
             response = requests.get(self.url, stream=True)
             response.raise_for_status()
 
-            print(self.url)
-            print(self.filepath)
             with open(self.filepath, 'wb') as file:
                 for chunk in response.iter_content(chunk_size=1024):
                     if chunk:
@@ -57,7 +55,7 @@ class GithubRepositoryDownloader(QObject):
         settings = QSettings("MiningMath", "MMLabs")
         self.token = settings.value("token", None)
         if not self.token:
-            print("Acess limited on 60 per hour")
+            self.headers = False
             return
         else:
             self.headers = {
@@ -97,7 +95,6 @@ class GithubRepositoryDownloader(QObject):
 
         dirPath = QFileInfo(QDir(lastPath), dir).absoluteFilePath()
         directory = QDir(dirPath)
-        print(lastPath, dir, dirPath)
         if not directory.exists():
              QDir().mkpath(dirPath)
 
@@ -140,11 +137,9 @@ class GithubRepositoryDownloader(QObject):
         else:
             response = requests.get(url)
         directories = []
-        print(url,  response)
 
         if response.status_code == 200:
             contents = json.loads(response.text)
-            print(contents)
             for item in contents:
                 if item['type'] == 'dir':  # Verifica se o item é um diretório
                     directories.append(item['path'])
@@ -259,23 +254,13 @@ class GithubRepositoryDownloader(QObject):
             githubDate = self.getCommitDate(dir)
             githubHash = self.getCommitHash(dir)
 
-            print("githubDate", githubDate)
-            print("githubHash", githubHash)
-            print("localCommitData", localCommitData)
-
             if not localCommitData or not githubDate or not githubHash:
-                print("Erro ao obter dados do commit.")
                 return False
 
             localHash, localDate = localCommitData.split(", ")
 
             localDate = QDateTime.fromString(localDate, Qt.ISODate)
             githubDate = QDateTime.fromString(githubDate, Qt.ISODate)
-
-            print("localhash", localHash)
-            print("githubHash", githubHash)
-            print("githubDate", githubDate.toString(Qt.ISODate))
-            print("localDate", localDate.toString(Qt.ISODate))
 
             return githubHash == localHash and githubDate <= localDate
         except Exception as e:

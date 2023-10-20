@@ -52,9 +52,7 @@ class MainWindow(QMainWindow):
         lastPath = settings.value("last_path", None)
         if lastPath:
             self.path = lastPath
-            print("load path inicio " + lastPath)
             self.model.loadPath(self.path)
-            print("load path fim " + lastPath)
         else:
             self.configPath()
 
@@ -63,15 +61,12 @@ class MainWindow(QMainWindow):
         self.resize(800, 600)
         self.show()
         iconInfo = QFileInfo("./mms-labs/labs/labs.ico")
-        print(iconInfo.absoluteFilePath())
         self.setWindowIcon(QIcon(iconInfo.absoluteFilePath()))
 
         initialPython = settings.value("python_path", None)
-        print(initialPython)
         if initialPython == None or initialPython == "":
             pyPath = QFileInfo("./Python3/python.exe");
             settings.setValue("python_path", pyPath.absoluteFilePath())
-            print(pyPath.absoluteFilePath())
 
 
     # ação para adicionar um executável individual fora do path
@@ -107,7 +102,6 @@ class MainWindow(QMainWindow):
     # Configura o path onde ficam salvos os executáveis baixados
     def configPath(self, initialPath=None):
 
-        print("loucura")
         settings = QSettings("MiningMath", "MMLabs")
         if initialPath:
             self.path = initialPath
@@ -115,8 +109,6 @@ class MainWindow(QMainWindow):
             initialPath = settings.value("last_path", None)
             initialPython = settings.value("python_path", None)
             initialToken = settings.value("token", None)
-            print(initialPath)
-            print(initialPython)
             dialog = ConfigPathDialog(initialPath, initialPython, initialToken, self)
             result = dialog.exec()
             if result == ConfigPathDialog.Accepted:

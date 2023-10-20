@@ -26,7 +26,6 @@ class Application:
         directory = self.fileInfo.absolutePath()
         venvPath = QFileInfo(QDir(directory), 'venv').absoluteFilePath()
         venvInfo = QFileInfo(venvPath)
-        print("verifica venv", venvInfo.absoluteFilePath())
         if not venvInfo.exists() :
             self.createVenv()
 
@@ -36,7 +35,6 @@ class Application:
             pipPath = os.path.join(venvPath, 'bin', 'pip') if os.name != 'nt' else os.path.join(venvPath, 'Scripts', 'pip.exe')
             try:
                 subprocess.run([pipPath, 'install', '-r', requirementsPath], check=True)
-                print(f"Dependencies installed from {requirementsPath}")
                 self.compileUiFiles()
             except Exception as e:
                 print(f"Error installing dependencies: {e}")
@@ -58,7 +56,6 @@ class Application:
         # Criar o ambiente virtual
         try:
             subprocess.run([pythonPath, '-m', 'venv', venvPath], check=True)
-            print(f"Virtual environment created at {venvPath}")
         except Exception as e:
             print(f"Error creating virtual environment: {e}")
             return
@@ -74,13 +71,11 @@ class Application:
         # Verifica se o diretório contém um ambiente virtual
         venv_dir = QDir(self.fileInfo.absolutePath())
         if not venv_dir.cd("venv"):
-            print("Não foi encontrado um ambiente virtual neste diretório.")
             return
 
         # Verifica se o uic.exe existe no ambiente virtual
         uicInfo = QFileInfo(venv_dir.absoluteFilePath("Lib/site-packages/PySide6/uic.exe"))
         if not uicInfo.exists():
-            print(f"uic.exe não foi encontrado em {uicInfo.absoluteFilePath()}.")
             return
 
         # Volta ao diretório original para procurar por arquivos .ui
@@ -89,7 +84,6 @@ class Application:
         # Procura por arquivos .ui no diretório
         uiFiles = venv_dir.entryList(["*.ui"], QDir.Files)
         if not uiFiles:
-            print("Não foram encontrados arquivos .ui neste diretório.")
             return
 
         # Compila cada arquivo .ui
@@ -103,9 +97,8 @@ class Application:
             try:
                 # Executa o comando
                 subprocess.run(cmd, check=True)
-                print(f"Arquivo {uiFile} compilado com sucesso para {output_file}.")
             except subprocess.CalledProcessError as e:
-                print(f"Erro ao compilar o arquivo {uiFile}: {e}.")
+                print(f"Erro compile {uiFile}: {e}.")
 
 
 
@@ -117,7 +110,6 @@ class Application:
 
         # Verificar se o diretório existe
         if not os.path.exists(directory):
-            print("The provided directory does not exist.")
             return None
 
         # Montar o caminho completo para o arquivo README
@@ -125,7 +117,6 @@ class Application:
 
         # Verificar se o arquivo README existe
         if not os.path.isfile(readme_path):
-            print("README.md file does not exist in the provided directory.")
             return None
 
         # Ler e retornar o conteúdo do arquivo README
