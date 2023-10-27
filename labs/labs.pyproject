@@ -3,11 +3,12 @@
         "labs.py",
         "mainwindow.py",
         "mainwindow.ui",
-        "executablesTableModel.py",
+        "appTableModel.py",
         "labs.manifest",
         "downloader.py",
         "configPath.ui",
         "configPath.py",
-        "doubleclickedlineedit.py"
+        "doubleclickedlineedit.py",
+        "application.py"
     ]
 }

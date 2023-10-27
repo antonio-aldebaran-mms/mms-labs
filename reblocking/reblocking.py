@@ -35,10 +35,10 @@ def reblock_model(block_model, original_dim, reblock_dim):
     reblocked_model.rename(columns={'rx': 'X', 'ry': 'Y', 'rz': 'Z'}, inplace=True)
     return reblocked_model
 
-input_file = input("Input file path \n")
-output_file = input("Output file path \n")
-original_dimensions = input("Original x, y, z dimensions. format: 0 0 0 \n").split()
-reblock_dimensions = input("Reblocked x, y, z dimensions. format: 0 0 0 \n").split()
-block_model = pd.read_csv(output_file)
+input_file = input("Enter the original file path \n")
+output_file = input("Enter the output file path \n")
+original_dimensions = input("Enter the values for the original x, y, z dimensions. format: 0 0 0 \n").split()
+reblock_dimensions = input("Enter the values for the relocked x, y, z dimensions. format: 0 0 0 \n").split()
+block_model = pd.read_csv(input_file)
 reblocked_model = reblock_model(block_model, original_dimensions, reblock_dimensions)
 reblocked_model.to_csv(output_file, index=False)

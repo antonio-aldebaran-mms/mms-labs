@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>729</width>
-    <height>347</height>
+    <height>447</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <item>
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>Configuration for executables:</string>
+      <string>Configuration</string>
      </property>
     </widget>
    </item>
@@ -68,7 +68,7 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>Configuration for python (experimental)</string>
+      <string>Select python.exe to create venv and run scripts</string>
      </property>
     </widget>
    </item>
@@ -91,7 +91,11 @@
       </widget>
      </item>
      <item>
-      <widget class="DoubleClickedLineEdit" name="lePython"/>
+      <widget class="DoubleClickedLineEdit" name="lePython">
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QPushButton" name="pbPython">
@@ -105,7 +109,7 @@
    <item>
     <widget class="QLabel" name="label_3">
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Using Python Files&lt;/span&gt;&lt;/p&gt;&lt;p&gt;To execute Python scripts, you must have the Python interpreter installed on your system. It's not automatically included, so you'll need to install it manually. You can download the official Python installer from &lt;a href=&quot;https://www.python.org/downloads/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;python.org&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Additionally, each Python script may have its own set of requirements, which are usually listed in a &lt;span style=&quot; font-family:'Courier New';&quot;&gt;requirements.txt&lt;/span&gt; file within the script's directory. These dependencies need to be installed using the package manager, &lt;span style=&quot; font-family:'Courier New';&quot;&gt;pip&lt;/span&gt;, to ensure the script functions correctly. If you're unfamiliar with this process, it's crucial to read the documentation provided with the script or consult Python's official documentation.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Using Python Files &lt;/span&gt;&lt;/p&gt;&lt;p&gt;To execute Python scripts, ensure that the Python exe field is properly filled. &lt;/p&gt;&lt;p&gt;Select the directory in the folder labs field so the scripts can be updated and have their requirements met. &lt;/p&gt;&lt;p&gt;The primary script must contain if __name__ == &amp;quot;__main__&amp;quot; to be included in the list and executed. &lt;/p&gt;&lt;p&gt;The script's description should be in the README.md file, and dependencies should be listed in the requirements.txt file.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
@@ -124,6 +128,27 @@
       </size>
      </property>
     </spacer>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Our repository use github to download python code, to inscrease limit of requisition, add personal token.</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Github Token:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="leToken"/>
+     </item>
+    </layout>
    </item>
    <item>
     <widget class="QDialogButtonBox" name="buttonBox">
